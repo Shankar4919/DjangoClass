@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block title %}
+<title>Show Person</title>
+{% endblock %}
+{% block main_content %}
+<div class="container">
+    <div class="row">
+        <a href="/products/postPersonMF"
+           class="btn btn-sm btn-primary ml-auto m-2 p-2">Add Person</a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for person in person %}
+            <tr>
+                <td>{{person.firstname}}</td>
+                <td>{{person.lastname}}</td>
+                <td>{{person.email}}</td>
+                <td>{{person.phone}}</td>
+                <td><a href="" class="btn btn-primary">Edit</a>
+                <a href="/products/deletePersonMF/{{person.id}}"
+                   onclick="return confirm('Are you sure you want to delete')" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+{% endblock %}
