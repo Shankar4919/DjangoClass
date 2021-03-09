@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 
 def register_user(request):
@@ -19,3 +19,12 @@ def register_user(request):
         'form': UserCreationForm
     }
     return render(request, 'accounts/register.html', context)
+
+
+def login_user(request):
+    return render(request, 'accounts/login.html')
+
+
+def logout_user(request):
+    logout(request)
+    redirect('/')
