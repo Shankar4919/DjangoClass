@@ -1,4 +1,6 @@
 from django.db import models
+from django.core import validators
+from django.core.validators import *
 
 
 # Create your models here.
@@ -13,10 +15,10 @@ class Product(models.Model):
 
 
 class Person(models.Model):
-    firstname = models.CharField(max_length=200, null=True)
-    lastname = models.CharField(max_length=200,null=True)
-    email = models.EmailField(unique=True, null=True)
-    phone = models.CharField(max_length=200, null=True)
+    firstname = models.CharField(max_length=200, null=True, validators=[validators.MinLengthValidator(2)])
+    lastname = models.CharField(max_length=200,null=True, validators=[validators.MinLengthValidator(2)])
+    email = models.EmailField(unique=True, null=True, validators=[validate_email])
+    phone = models.CharField(max_length=10, null=True, validators=[validators.MinLengthValidator(9)])
 
     def __str__(self):
         return self.firstname
@@ -32,3 +34,8 @@ class Student(models.Model):
 
     def __str__(self):
         return self.firstname
+
+
+class FileUpload(models.Model):
+    title = models.CharField(max_length=200, null=True)
+    file = models.FileField(upload_to='static/uploads')

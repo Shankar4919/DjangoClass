@@ -26,7 +26,7 @@
                         <td>{{ student.batch }}</td>
                         <td>{{ student.category }}</td>
                         <td> <img src="{{student.image_url}}" alt="Student_img" width="100"></td>
-                        <td><button class="btn btn-primary">Edit</button>&nbsp;
+                        <td><a href="/products/updateStudent/{{student.id}}" class="btn btn-primary btn-sm">Edit</a>&nbsp;
                             <a href="/products/deleteStudent/{{student.id}}"
                              class="btn btn-danger btn-sm" onclick="return confirm('Are u sure')">Delete</a></td>
                     </tr>

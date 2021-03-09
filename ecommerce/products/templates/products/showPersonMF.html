@@ -1,12 +1,18 @@
 {% extends 'layout.html' %}
 {% block title %}
-<title>Show Person</title>
+<title>All Person</title>
 {% endblock %}
 {% block main_content %}
 <div class="container">
     <div class="row">
         <a href="/products/postPersonMF"
            class="btn btn-sm btn-primary ml-auto m-2 p-2">Add Person</a>
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <h6 class="success_message py-3 px-1 my-2 text-center">{{message}}</h6>
+        {% endif %}
+        {% endfor %}
+
         <table class="table table-striped">
             <thead>
             <tr>
@@ -24,8 +30,8 @@
                 <td>{{person.lastname}}</td>
                 <td>{{person.email}}</td>
                 <td>{{person.phone}}</td>
-                <td><a href="" class="btn btn-primary">Edit</a>
-                <a href="/products/deletePersonMF/{{person.id}}"
+                <td><a href="products/updatePersonMF/{{person.id}}" class="btn btn-primary">Edit</a>
+                <a href="products/deletePersonMf/{{person.id}}"
                    onclick="return confirm('Are you sure you want to delete')" class="btn btn-danger">Delete</a></td>
             </tr>
             {% endfor %}
