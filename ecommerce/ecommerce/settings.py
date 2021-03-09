@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
-    'bootstrapform'
+    'bootstrapform',
+    'accounts.apps.AccountsConfig'
 
 ]
 
@@ -83,13 +84,13 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASE = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ecommerce_web_development',
-        'USER': 'mamba',
+        'USER': 'root',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode = 'STRICT_TRANS_TABLES'"
